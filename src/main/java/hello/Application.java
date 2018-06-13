@@ -15,9 +15,9 @@ public class Application {
     @Bean
     public CommandLineRunner initBase(ContactRepository contactRepository){
         return (args) -> {
-            contactRepository.save(new Contact("Nathan", "Folb", "Jambono", "nathan.folb@gmail.com", "0631489248"));
+            /*contactRepository.save(new Contact("Nathan", "Folb", "Jambono", "nathan.folb@gmail.com", "0631489248"));
             contactRepository.save(new Contact("Tony", "Hun", "", "tony.hun@gmail.com", "06666666"));
-            contactRepository.save(new Contact("Quentin", "wuattier", "passif", "quantin.wuatier@gmail.com", "066666666"));
+            contactRepository.save(new Contact("Quentin", "wuattier", "passif", "quantin.wuatier@gmail.com", "066666666"));*/
         };
     }
 

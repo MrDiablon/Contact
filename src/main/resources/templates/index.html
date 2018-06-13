@@ -1,18 +1,48 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Annuaire</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link th:href="@{/webjars/bootstrap/4.1.1/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script th:src="@{/webjars/bootstrap/4.1.1/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
 <body>
 
-<tr th:each="c : ${allContact}">
-    <div>
-        <p th:text="${c.getSurname().length() == 0 ? c.getLastName() + ' ' + c.getFirstName() : c.getSurname()}"></p>
-        <p th:text=" 'Mail : ' + ${c.getMail()}"></p>
-        <p th:text=" 'Numéro : ' + ${c.getNumber()} " ></p>
-    </div>
-</tr>
+<nav class="navbar navbar-dark bg-dark">
+    <button class="navbar-toggler" onclick="location.href='#'">Contacts</button>
+    <button class="btn btn-success" onclick="location.href='add.htm'">Ajouter un contact</button>
+</nav>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Dénomincation</th>
+            <th>Mail</th>
+            <th>Numéro</th>
+            <th><button class="btn btn-success" onclick="location.href='add.htm'"><i class="fa fa-plus-circle"></i></button></th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr th:each="c,iter : ${allContact}">
+
+        <td th:text="${c.getSurname().length() == 0 ? c.getLastName() + ' ' + c.getFirstName() : c.getSurname()}"></td>
+        <td th:text="  ${c.getMail()}"></td>
+        <td th:text="  ${c.getNumber()} " ></td>
+
+
+        <th><button class="btn btn-danger" th:onclick="|location.href='/delete.htm/${c.getId()}'|" type="submit" ><i class="fa fa-trash"></i></button>
+        <button class="btn btn-success" th:onclick="|location.href='/addContact/${c.getId()}'|" type="submit"><i class="fa fa-pencil"></i></button></th>
+
+
+    </tr>
+
+    </tbody>
+</table>
 
 </body>
 </html>

@@ -25,6 +25,19 @@ public class Contact {
         this.number = number;
     }
 
+    public Contact(AddContactForm contactForm) {
+        this.id = contactForm.getId();
+        this.firstName = contactForm.getFirstName();
+        this.lastName = contactForm.getLastName();
+        this.surname = contactForm.getSurname();
+        this.mail = contactForm.getMail();
+        this.number = contactForm.getNumber();
+    }
+
+    public int getId() {
+        return id;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -43,5 +56,10 @@ public class Contact {
 
     public String getNumber() {
         return number;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(this.id);
     }
 }
